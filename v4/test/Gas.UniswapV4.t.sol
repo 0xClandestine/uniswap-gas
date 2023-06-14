@@ -7,7 +7,7 @@ import "./utils/MockERC20.sol";
 import {TickMath} from "v4-core/libraries/TickMath.sol";
 import {PoolModifyPositionTest} from "v4-core/test/PoolModifyPositionTest.sol";
 import {PoolSwapTest} from "v4-core/test/PoolSwapTest.sol";
-import {Deployers} from "v4-core/../test/foundry-tests/utils/Deployers.sol";
+import {Deployers} from "@uniswap/v4-core/test/foundry-tests/utils/Deployers.sol";
 
 
 contract UniswapV4GasTest is Test, Deployers {
