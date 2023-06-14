@@ -1,36 +1,21 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.19;
+pragma solidity ^0.8.17;
 
 library SafeMathLib {
     function add(uint256 a, uint256 b) internal pure returns (uint256) {
-        uint256 c = a + b;
-        require(c >= a, "SafeMath: addition overflow");
-        return c;
+        return a + b;
     }
 
     function sub(uint256 a, uint256 b) internal pure returns (uint256) {
-        require(b <= a, "SafeMath: subtraction overflow");
-        uint256 c = a - b;
-        return c;
+        return a - b;
     }
 
     function mul(uint256 a, uint256 b) internal pure returns (uint256) {
-        // Gas optimization: this is cheaper than requiring 'a' not being zero, but the
-        // benefit is lost if 'b' is also tested.
-        // See: https://github.com/OpenZeppelin/openzeppelin-contracts/pull/522
-        if (a == 0) {
-            return 0;
-        }
-
-        uint256 c = a * b;
-        require(c / a == b, "SafeMath: multiplication overflow");
-        return c;
+        return a * b;
     }
 
     function div(uint256 a, uint256 b) internal pure returns (uint256) {
-        require(b > 0, "SafeMath: division by zero");
-        uint256 c = a / b;
-        return c;
+        return a / b;
     }
 }
 
@@ -47,9 +32,7 @@ contract MockERC20 {
     mapping(address => mapping(address => uint256)) private allowances;
 
     event Transfer(address indexed from, address indexed to, uint256 value);
-    event Approval(
-        address indexed owner, address indexed spender, uint256 value
-    );
+    event Approval(address indexed owner, address indexed spender, uint256 value);
 
     function balanceOf(address account) public view returns (uint256) {
         return balances[account];
@@ -78,16 +61,10 @@ contract MockERC20 {
         return true;
     }
 
-    function transferFrom(address from, address to, uint256 value)
-        public
-        returns (bool)
-    {
+    function transferFrom(address from, address to, uint256 value) public returns (bool) {
         require(to != address(0), "ERC20: transfer to the zero address");
         require(value <= balances[from], "ERC20: insufficient balance");
-        require(
-            value <= allowances[from][msg.sender],
-            "ERC20: insufficient allowance"
-        );
+        require(value <= allowances[from][msg.sender], "ERC20: insufficient allowance");
 
         balances[from] = balances[from].sub(value);
         balances[to] = balances[to].add(value);
@@ -96,11 +73,7 @@ contract MockERC20 {
         return true;
     }
 
-    function allowance(address owner, address spender)
-        public
-        view
-        returns (uint256)
-    {
+    function allowance(address owner, address spender) public view returns (uint256) {
         return allowances[owner][spender];
     }
 }
