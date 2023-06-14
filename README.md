@@ -8,13 +8,13 @@ A comprehensive gas report comparing all four versions of Uniswap, a popular dec
 
 The table below shows the gas costs for creating markets in different Uniswap versions:
 
-<div align="center">
+<!-- <div align="center">
    <img 
       src="./assets/market-creation.png" 
       alt="Market Creation PNG" 
       style="border-radius: 10px; width: 75%;"
       >
-</div>
+</div> -->
 
 <table align="center" style="width: 75%;">
    <tr>
