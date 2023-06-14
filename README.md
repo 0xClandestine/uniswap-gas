@@ -7,45 +7,64 @@ A comprehensive gas report comparing all four versions of Uniswap, a popular dec
 To ensure consistency, the gas cost calculations in this report assume a gas price of *40 GWEI*, and the corresponding USD cost calculations assume an exchange rate of *1 ETH = $1750*.
 
 &nbsp;
+### TODO:
 
-## Market Creation
+- Deposit Liquidity
+- Withdraw Liquidity
+- Single-hop Token Swap
+- Multi-hop Token Swap
 
-###### *The table below shows the gas costs for creating markets in different Uniswap versions:*
+&nbsp;
 
-<table align="left" style="width: 75%;">
-   <tr>
-      <th>Version</th>
-      <th>Method</th>
-      <th>Gas</th>
-      <th>Cost in ETH (40 gwei)</th>
-      <th>Cost in USD (1 ETH = $1750)</th>
-   </tr>
-   <tr>
-      <td>V1</td>
-      <td>'createExchange()'</td>
-      <td>251,388</td>
-      <td>0.01005552</td>
-      <td>$17.61</td>
-   </tr>
-   <tr>
-      <td>V2</td>
-      <td>'createPair()'</td>
-      <td>2,011,234</td>
-      <td>0.08044936</td>
-      <td>$140.79</td>
-   </tr>
-   <tr>
-      <td>V3</td>
-      <td>'createPool()'</td>
-      <td>4,537,328</td>
-      <td>0.18149312</td>
-      <td>$318.37</td>
-   </tr>
-   <tr>
-      <td>V4</td>
-      <td>'initialize()'</td>
-      <td>35,579</td>
-      <td>0.00142316</td>
-      <td>$2.49</td>
-   </tr>
-</table>
+## Pool Creation
+
+| Version | Method          | Gas        | Cost in ETH (40 gwei) | Cost in USD (1 ETH = $1750) |
+| ------- | --------------- | ---------- | --------------------- | --------------------------- |
+| V1      | createExchange  | 251,388    | 0.01005552            | $17.61                      |
+| V2      | createPair      | 2,011,234  | 0.08044936            | $140.79                     |
+| V3      | createPool      | 4,537,328  | 0.18149312            | $318.37                     |
+| V4      | initialize      | 35,579     | 0.00142316            | $2.49                       |
+
+&nbsp;
+
+## Deposit Liquidity
+
+| Version | Method          | Gas        | Cost in ETH (40 gwei) | Cost in USD (1 ETH = $1750) |
+| ------- | --------------- | ---------- | --------------------- | --------------------------- |
+| V1      | ???             | ???        | ???                   | ???                         |
+| V2      | ???             | ???        | ???                   | ???                         |
+| V3      | ???             | ???        | ???                   | ???                         |
+| V4      | ???             | ???        | ???                   | ???                         |
+
+&nbsp;
+
+## Withdraw Liquidity
+
+| Version | Method          | Gas        | Cost in ETH (40 gwei) | Cost in USD (1 ETH = $1750) |
+| ------- | --------------- | ---------- | --------------------- | --------------------------- |
+| V1      | ???             | ???        | ???                   | ???                         |
+| V2      | ???             | ???        | ???                   | ???                         |
+| V3      | ???             | ???        | ???                   | ???                         |
+| V4      | ???             | ???        | ???                   | ???                         |
+
+&nbsp;
+
+## Single-hop Token Swap
+
+| Version | Method          | Gas        | Cost in ETH (40 gwei) | Cost in USD (1 ETH = $1750) |
+| ------- | --------------- | ---------- | --------------------- | --------------------------- |
+| V1      | ???             | ???        | ???                   | ???                         |
+| V2      | ???             | ???        | ???                   | ???                         |
+| V3      | ???             | ???        | ???                   | ???                         |
+| V4      | ???             | ???        | ???                   | ???                         |
+
+&nbsp;
+
+## Multi-hop Token Swap
+
+| Version | Method          | Gas        | Cost in ETH (40 gwei) | Cost in USD (1 ETH = $1750) |
+| ------- | --------------- | ---------- | --------------------- | --------------------------- |
+| V1      | ???             | ???        | ???                   | ???                         |
+| V2      | ???             | ???        | ???                   | ???                         |
+| V3      | ???             | ???        | ???                   | ???                         |
+| V4      | ???             | ???        | ???                   | ???                         |
