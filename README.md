@@ -54,9 +54,9 @@ To ensure consistency, the gas cost calculations in this report assume a gas pri
 | Version | Method          | Gas        | Cost in ETH (40 gwei) | Cost in USD (1 ETH = $1750) |
 | ------- | --------------- | ---------- | --------------------- | --------------------------- |
 | V1      | ???             | ???        | ???                   | ???                         |
-| V2      | ???             | ???        | ???                   | ???                         |
+| V2      | swap            | 54,214     | 0.00216856            | $3.79                       |
 | V3      | ???             | ???        | ???                   | ???                         |
-| V4      | ???             | ???        | ???                   | ???                         |
+| V4      | lock            | 230,015    | 0.0092006             | $16.101                     |
 
 &nbsp;
 
