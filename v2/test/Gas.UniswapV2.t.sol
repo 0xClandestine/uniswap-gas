@@ -67,6 +67,4 @@ contract UniswapV2GasTest is DSTest {
 
         _pair.mint(address(this));
     }
-
-    
 }

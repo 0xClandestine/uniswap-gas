@@ -9,7 +9,6 @@ import {PoolModifyPositionTest} from "v4-core/test/PoolModifyPositionTest.sol";
 import {PoolSwapTest} from "v4-core/test/PoolSwapTest.sol";
 import {Deployers} from "@uniswap/v4-core/test/foundry-tests/utils/Deployers.sol";
 
-
 contract UniswapV4GasTest is Test, Deployers {
     PoolManager public poolManager;
     PoolModifyPositionTest modifyPositionRouter;
@@ -43,9 +42,7 @@ contract UniswapV4GasTest is Test, Deployers {
         Currency _tokenA = Currency.wrap(address(tokenA));
         Currency _tokenB = Currency.wrap(address(tokenB));
 
-        IPoolManager.PoolKey memory poolKey = IPoolManager.PoolKey(
-            _tokenA, _tokenB, 60, 60, IHooks(address(0))
-        );
+        IPoolManager.PoolKey memory poolKey = IPoolManager.PoolKey(_tokenA, _tokenB, 60, 60, IHooks(address(0)));
 
         uint256 gasBefore = gasleft();
         _poolManager.initialize(poolKey, 4295128739);
@@ -64,21 +61,16 @@ contract UniswapV4GasTest is Test, Deployers {
         tokenA.mint(address(this), 1e18);
         tokenA.approve(address(swapRouter), 1e18);
 
-        IPoolManager.SwapParams memory params = IPoolManager.SwapParams({
-            zeroForOne: true,
-            amountSpecified: 1e18,
-            sqrtPriceLimitX96: SQRT_RATIO_1_2
-        });
+        IPoolManager.SwapParams memory params =
+            IPoolManager.SwapParams({zeroForOne: true, amountSpecified: 1e18, sqrtPriceLimitX96: SQRT_RATIO_1_2});
 
-        PoolSwapTest.TestSettings memory testSettings = PoolSwapTest.TestSettings({
-            withdrawTokens: true,
-            settleUsingTransfer: true
-        });
+        PoolSwapTest.TestSettings memory testSettings =
+            PoolSwapTest.TestSettings({withdrawTokens: true, settleUsingTransfer: true});
 
         uint256 gasBefore = gasleft();
         swapRouter.swap(_poolKey, params, testSettings);
         uint256 gasAfter = gasleft();
-        
+
         emit log_string("Gas Usage (Single Swap):");
         emit log_uint(gasBefore - gasAfter);
     }
@@ -91,7 +83,7 @@ contract UniswapV4GasTest is Test, Deployers {
         );
     }
 
-    function createLiquidity(IPoolManager.PoolKey memory poolKey) internal {        
+    function createLiquidity(IPoolManager.PoolKey memory poolKey) internal {
         // Provide liquidity to the pool
         tokenA.approve(address(modifyPositionRouter), 100 ether);
         tokenB.approve(address(modifyPositionRouter), 100 ether);
