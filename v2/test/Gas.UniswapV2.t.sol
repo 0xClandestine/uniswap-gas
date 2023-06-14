@@ -8,7 +8,6 @@ import "v2-core/UniswapV2Pair.sol";
 import "v2-core/UniswapV2Factory.sol";
 
 contract UniswapV2GasTest is DSTest {
-    UniswapV2Pair pair;
     UniswapV2Factory factory;
     MockERC20 tokenA;
     MockERC20 tokenB;
@@ -38,6 +37,21 @@ contract UniswapV2GasTest is DSTest {
 
         uint256 gasBefore = gasleft();
         _factory.createPair(_tokenA, _tokenB);
+        uint256 gasAfter = gasleft();
+
+        emit log_string("Gas Usage:");
+        emit log_uint(gasBefore - gasAfter);
+    }
+
+    // 132,806
+    function test_Mint_GasUsage() public {
+        address _pair = factory.createPair(address(tokenA), address(tokenB));
+
+        tokenA.mint(_pair, 1 ether);
+        tokenB.mint(_pair, 2 ether);
+
+        uint256 gasBefore = gasleft();
+        UniswapV2Pair(_pair).mint(address(this));
         uint256 gasAfter = gasleft();
 
         emit log_string("Gas Usage:");
