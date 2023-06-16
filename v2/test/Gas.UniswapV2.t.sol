@@ -57,29 +57,30 @@ contract UniswapV2GasTest is DSTest {
         emit log_uint(gasBefore - gasAfter);
     }
 
-    function test_SingleSwap_1Ether_GasUsage() public {
-        pair = UniswapV2Pair(factory.createPair(address(tokenA), address(tokenB)));
-        createLiquidity(pair);
+    function test_SingleSwap_GasUsage() public {
+        UniswapV2Pair pair =
+            UniswapV2Pair(factory.createPair(address(tokenA), address(tokenB)));
 
-        // swapping directly via UniswapV2Pair involves transferring the tokens to the contract
-        // we'll overpay here to avoid reverts
-        tokenA.mint(address(this), 2e18);
-        tokenA.transfer(address(pair), 2e18);
+        _createLiquidity(pair);
+
+        MockERC20 _tokenA = tokenA;
+        MockERC20 _tokenB = tokenB;
 
         uint256 gasBefore = gasleft();
-        // swap for 1e18 of tokenB
+        _tokenA.mint(address(this), 2e18);
+        _tokenA.transfer(address(pair), 2e18);
         pair.swap(0, 1e18, address(this), hex"");
         uint256 gasAfter = gasleft();
+
         emit log_string("Gas Usage (Single Swap):");
         emit log_uint(gasBefore - gasAfter);
     }
 
     // -- Helper Functions -- //
-    function createLiquidity(UniswapV2Pair _pair) internal {
+    function _createLiquidity(UniswapV2Pair _pair) internal {
         tokenA.mint(address(_pair), 100e18);
         tokenB.mint(address(_pair), 100e18);
 
         _pair.mint(address(this));
     }
-
 }
